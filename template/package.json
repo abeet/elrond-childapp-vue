@@ -1,0 +1,49 @@
+{
+  "name": "{{service_id}}",
+  "description": "{{service_name}}",
+  "version": "1.0.0",
+  "author": "{{author}}",
+  "license": "ISC",
+  "scripts": {
+    "start": "node ./server.js",
+    "dev": "cross-env NODE_ENV=dev webpack --config webpack.config.js --watch",
+    "dev:ie": "cross-env NODE_ENV=dev:ie webpack --config webpack.config.js --watch",
+    "build": "cross-env NODE_ENV=prod webpack --config webpack.config.js --progress --hide-modules"
+  },
+  "dependencies": {
+    "axios": "0.x",
+    "axios-mock-adapter": "1.x",
+    "element-ui": "^2.4.5",
+    "lodash": "4.x",
+    "mockjs": "^1.0.1-beta3",
+    "v-hotkey": "^0.2.3",
+    "vue": "2.5.x",
+    "vue-router": "2.x"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.2",
+    "cross-env": "^5.1.1",
+    "css-loader": "^0.28.11",
+    "file-loader": "^1.1.11",
+    "get-port": "^4.0.0",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^3.2.0",
+    "network-address": "^1.1.2",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2",
+    "style-loader": "^0.21.0",
+    "url-loader": "^1.0.1",
+    "vue-loader": "15.2.4",
+    "vue-template-compiler": "2.5.x",
+    "webpack": "^4.16.3",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
