@@ -9,10 +9,10 @@
       <tbody>
         <tr v-for="i in 5">
           <td>
-            {{getRandomString()}}
+            \{{getRandomString()}}
           </td>
           <td>
-            {{getRandomString(50)}}
+            \{{getRandomString(50)}}
           </td>
         </tr>
      </tbody>

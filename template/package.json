@@ -1,5 +1,5 @@
 {
-  "name": "{{service_id}}",
+  "name": "{{name}}",
   "description": "{{service_name}}",
   "version": "1.0.0",
   "author": "{{author}}",

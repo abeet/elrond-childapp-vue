@@ -17,10 +17,10 @@
       <tbody>
         <tr v-for="i in new Array(5)">
           <td>
-            {{getRandomString()}}
+            \{{getRandomString()}}
           </td>
           <td>
-            {{getRandomString()}}
+            \{{getRandomString()}}
           </td>
           <td>
             <a :href="'#/form/subroute4?id='+getRandomString()">查看详情</a>

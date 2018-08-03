@@ -12,16 +12,21 @@ module.exports = {
     "service_id": {
       "type": "string",
       "required": true,
-      "message": "子应用 id，必填，必须为英文，无空格及其他特殊字符"
+      "message": "子应用id（必须为英文，无空格及其他特殊字符）："
     },
     "service_name": {
       "type": "string",
       "required": true,
-      "message": "子应用 name，必填，必须为中文，无空格"
+      "message": "子应用name（必须为中文，无空格）："
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "message": "项目名（可以与子应用id相同）："
     },
     "author": {
       "type": "string",
-      "message": "Author"
+      "message": "作者："
     }
   },
   "filters": {
