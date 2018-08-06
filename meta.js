@@ -31,5 +31,5 @@ module.exports = {
   },
   "filters": {
   },
-  "completeMessage": "开始你的项目：\n\n  cd ./{{destDirName}}/client\n  yarn install\n  yarn run dev\n  yarn run start"
+  "completeMessage": "开始你的项目：\n\n  cd ./{{destDirName}}\n  yarn install\n  yarn run dev\n  yarn run start"
 };
