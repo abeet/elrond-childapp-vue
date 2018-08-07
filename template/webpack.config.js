@@ -54,11 +54,22 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(png|jpg|gif|svg|ttf|woff)$/,
+        test: /\.(png|jpg|gif|svg)$/,
         use: [{
           loader: 'url-loader',
           options: {
-            limit: 256
+            limit: 1024,
+            name: 'assets/images/[name].[ext]'
+          }
+        }]
+      },
+      {
+        test: /\.(ttf|woff)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 1024,
+            name: 'assets/fonts/[name].[ext]'
           }
         }]
       }
