@@ -1,7 +1,7 @@
 {
   "name": "elrond-childapp-vue",
   "version": "1.0.0",
-  "description": "基于 vue + element-ui 的前端微服务的子应用脚手架工程",
+  "description": "适用于zcf-cli安装的基于 vue + element-ui 的前端微服务的子应用脚手架工程的模板",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

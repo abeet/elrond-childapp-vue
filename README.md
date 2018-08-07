@@ -1,6 +1,6 @@
 # elrond-childapp-vue
 
-基于 zcf+vue 的单页面后台管理系统脚手架的模板
+适用于zcf-cli安装的基于 vue + element-ui 的前端微服务的子应用脚手架工程的模板
 
 ## 安装
 
@@ -10,12 +10,11 @@
 yarn add zcf-cli -g
 zcf init elrond-childapp-vue my-project
 cd my-project
-cd client
-yarn install
+yarn run dev
+yarn run start
 ```
 
 ### 运行
 
-- `server` 目录下是一个基于zcf的工程，运行java类 com.zving.Boot#main()  来启动后台服务
-- `client` 目录下是一个vue工程，执行 `yarn run dev`  `yarn run start` 来启动前台
+- 目录下是一个vue工程，执行 `yarn run dev`  `yarn run start` 来启动前台
 
