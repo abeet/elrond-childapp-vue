@@ -42,10 +42,10 @@ app.get('/healthCheck', (req, res) => {
     id: SERVICEID,
     name: SERVICENAME,
     children: []
-  ]
+  }]
   for(route of routes){
     if(route.path && route.meta && route.meta.title){
-      menus.children.push({
+      menus[0].children.push({
         id: route.path.replace(/\//g,'-').replace(/^-/,''),
         name: route.meta.title,
         link: route.path
