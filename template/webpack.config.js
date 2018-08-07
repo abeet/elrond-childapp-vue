@@ -58,7 +58,7 @@ module.exports = {
         use: [{
           loader: 'url-loader',
           options: {
-            limit: 1024,
+            limit: 4096, // 4K左右
             name: 'assets/images/[name].[ext]'
           }
         }]
@@ -68,7 +68,7 @@ module.exports = {
         use: [{
           loader: 'url-loader',
           options: {
-            limit: 1024,
+            limit: 4096, // 4K左右
             name: 'assets/fonts/[name].[ext]'
           }
         }]
