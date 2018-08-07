@@ -1,5 +1,5 @@
 <template>
-  <div id="${SERVICEID}" class="${SERVICEID}">
+  <div :id="SERVICEID" :class="SERVICEID">
     <App/>
   </div>
 </template>
