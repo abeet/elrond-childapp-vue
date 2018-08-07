@@ -6,14 +6,14 @@
           <li v-for='menu in menus' :key="menu.path" v-if="menu.meta && menu.meta.title" class="menu-item level1 expanded" :class="{haschilds: menu.children && menu.children.length}">
 
             <router-link :to="menu.path" :class="{haschilds: menu.children && menu.children.length}">
-              <span class="menu-title">{{menu.meta.title}}</span>
+              <span class="menu-title">\{{menu.meta.title}}</span>
             </router-link>
 
             <ul v-if='menu.children && menu.children.length' class="menu level2">
               <li v-for="submenu in menu.children" :key='submenu.path' v-if="submenu.meta && submenu.meta.title" class="menu-item level2" :class="{active: routePath === submenu.path}">
 
                 <router-link :to="submenu.path">
-                  <span class="menu-title">{{submenu.meta.title}}</span>
+                  <span class="menu-title">\{{submenu.meta.title}}</span>
                 </router-link>
 
               </li>
@@ -23,7 +23,7 @@
       </div>
     </div>
     <div id='domain' class='domain'>
-      <a class='logo'>{{SERVICENAME}}</a>
+      <a class='logo'>\{{SERVICENAME}}</a>
     </div>
     <div id='services-container' class='services-container'>
 

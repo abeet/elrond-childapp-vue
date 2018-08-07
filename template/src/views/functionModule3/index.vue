@@ -20,12 +20,12 @@
       </el-table-column>
       <el-table-column label="所属机构" min-width="15%">
         <template slot-scope="scope">
-          <span>{{scope.row.branch.name}}</span>
+          <span>\{{scope.row.branch.name}}</span>
         </template>
       </el-table-column>
       <el-table-column label="所属角色" min-width="50%">
         <template slot-scope="scope">
-          <span v-for="role in scope.row.roles" :key="role.roleCode">{{role.name}} </span>
+          <span v-for="role in scope.row.roles" :key="role.roleCode">\{{role.name}} </span>
         </template>
       </el-table-column>
       <el-table-column prop="lastModifyPassTime" label="最后修改密码时间" min-width="20%"></el-table-column>

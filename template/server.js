@@ -33,7 +33,7 @@ app.get('/healthCheck', (req, res) => {
     }
   })
 
-  const port = await getPort(3000)
+  const port = await getPort({port: 3000})
   const ip = address()
   const serviceRegistryUrl = process.env.REGISTRY || 'http://localhost:8000'
   const url = `http://${ip}:${port}`

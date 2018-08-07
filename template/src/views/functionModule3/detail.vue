@@ -3,7 +3,7 @@
     <table class="table">
         <tr>
           <th colspan="2">
-            <b>{{$route.query.id}}</b>
+            <b>\{{$route.query.id}}</b>
           </th>
         </tr>
       <tbody>
