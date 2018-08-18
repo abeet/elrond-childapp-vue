@@ -1,0 +1,22 @@
+{
+  "root": true,
+  "parserOptions": {
+    "parser": "babel-eslint"
+  },
+  "env": {
+    "browser": true
+  },
+  "extends": [
+    "plugin:vue/essential",
+    "standard"
+  ],
+  "plugins": [
+    "vue",
+    "elrond-childapp-bound"
+  ],
+  "rules": {
+    "generator-star-spacing": "off",
+    "elrond-childapp-bound/no-global-declaration": 2,
+    "elrond-childapp-bound/no-write-cookie": 2
+  }
+}
