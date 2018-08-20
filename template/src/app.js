@@ -16,7 +16,7 @@ const router = new VueRouter({
   routes
 })
 
-window.app = new Vue({
+new Vue({
   router,
   el: `#root`,
   render: h => h(App)
