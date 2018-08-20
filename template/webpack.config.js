@@ -38,6 +38,38 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce: "pre",
+        test: /\.(js|vue)$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader",
+        options: {
+          "root": true,
+          "parserOptions": {
+            "parser": "babel-eslint"
+          },
+          "env": {
+            "browser": true
+          },
+          "plugins": [
+            "elrond-childapp-bound"
+          ],
+          "rules": {
+            "comma-dangle": 0,
+            "generator-star-spacing": 0,
+            "indent": 0,
+            "semi": 0,
+            "no-multiple-empty-lines": 0,
+            "no-unused-vars": 0,
+            "no-tabs": 0,
+            "space-before-blocks": 0,
+            "space-before-function-paren": 0,
+            "vue/no-unused-vars": 0,
+            "elrond-childapp-bound/no-global-declaration": 2,
+            "elrond-childapp-bound/no-write-cookie": 2
+          }
+        }
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
