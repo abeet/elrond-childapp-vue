@@ -15,7 +15,7 @@
     "elrond-childapp-bound"
   ],
   "rules": {
-    "generator-star-spacing": "off",
+    "no-new": "off",
     "elrond-childapp-bound/no-global-declaration": 2,
     "elrond-childapp-bound/no-write-cookie": 2
   }

@@ -122,8 +122,8 @@ portal.global.unsubscribe('foo.bar', callback) // 停止监听 bar 属性的改�
    ├─filters                  自定义过滤器
    ├─mixins                   公共mixins
    ├─store                    公共状态管理
-   ├─common                   公共js工具方法/类
-   │      util.js               工具类
+   ├─utils                   公共js工具方法/类
+   │      request.js
    │      ......
    ├─components               公共组件
    │      toolbar.vue

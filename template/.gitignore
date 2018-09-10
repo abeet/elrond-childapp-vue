@@ -4,7 +4,9 @@ Thumbs.db
 .classpath
 .settings
 .svn
-npm-debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 node_modules
 WEB-INF
 bower_components
@@ -22,3 +24,5 @@ typings
 *.iws
 *.iml
 *.ipr
+*.suo
+*.sln

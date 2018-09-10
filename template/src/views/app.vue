@@ -39,6 +39,12 @@
 import { SERVICEID, SERVICENAME } from '../config.js'
 import routes from '../router/routes.js'
 
+// 以下向window添加全局变量，如果有正确配置ESLint，应该会显示ESLint警告
+// window.asdf = 123
+// window['asdf'] = 123
+// 以下添加cookie，如果有正确配置ESLint，应该会显示ESLint警告
+// document.cookie = 'asdf=123'
+
 const menus = JSON.parse(JSON.stringify(routes))
 for (let i = menus.length - 1; i >= 0; i--) {
   let menu = menus[i]
@@ -54,7 +60,7 @@ for (let i = menus.length - 1; i >= 0; i--) {
   }
 }
 export default {
-  data() {
+  data () {
     return {
       SERVICEID,
       SERVICENAME,
@@ -63,4 +69,3 @@ export default {
   }
 }
 </script>
-

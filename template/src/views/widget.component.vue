@@ -15,7 +15,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="i in new Array(5)">
+        <tr v-for="i in 5" :key="i">
           <td>
             \{{getRandomString()}}
           </td>

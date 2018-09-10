@@ -29,14 +29,14 @@ const vueLifecycles = elrondSpaVue({
   }
 })
 
-export function bootstrap(props) {
+export function bootstrap (props) {
   return vueLifecycles.bootstrap(props)
 }
 
-export function mount(props) {
+export function mount (props) {
   return vueLifecycles.mount(props)
 }
 
-export function unmount(props) {
+export function unmount (props) {
   return vueLifecycles.unmount(props)
 }
