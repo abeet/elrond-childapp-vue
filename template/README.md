@@ -22,9 +22,9 @@
 
 ## 注意事项
 1. JS风格使用`JavaScript Standard Style`，建议使用VSCode作为js/vue的编辑器，并安装以下插件`EditorConfig for VSCode` , `Prettier-Standard - JavaScript formatter` , `JavaScript Standard Style` , `stylefmt` , `Vetur`。
-  并且vscode的配置里要加下面的命令，防止格式化时自动加分号。   
-  `  "prettier.singleQuote": true,`  
-  `  "prettier.semi": false,`  
+    并且vscode的配置里要加下面的命令，防止格式化时自动加分号。   
+    `  "prettier.singleQuote": true,`  
+    `  "prettier.semi": false,`  
 1. 在开发界面时使用ElementUI提供的栅格系统（24列），对界面进行响应式布局，以便移动端访问。
 1. 不要使用ElementUI提供的图标组件，使用Font Awesome 图标。
 1. 后端接口符合RESTful规范
@@ -42,15 +42,31 @@ ns.foo = { bar: 'val1', baz: 'val2'}
 ns.qux = (a, b) => {}
 ```
 ##### 防本地存储溢出规范
+
 1. Chrome下每个域名只能存50个`cookie`，最多4K数据。
-为了防止cookie存储溢出，普通子应用不要用`cookie`存储数据（系统后台会清掉各子应用写的`cookie`来强制禁止使用cookie），
-特殊情况经与平台管理员联系后可开放有限的`cookie`写权限。  
-2. Chrome下`sessionStorage` `localStorage`的容量为5M。超过5M后将无法写入。
-  1. 各子应用尽量用`sessionStorage`代替`localStorage`，防止`localStorage`膨胀
-  2. 各子应用不要向`localStorage`存储大量数据（超过100K）
+   为了防止cookie存储溢出，普通子应用不要用`cookie`存储数据（系统后台会清掉各子应用写的`cookie`来强制禁止使用cookie），
+   特殊情况经与平台管理员联系后可开放有限的`cookie`写权限。  
+2. 在脚手架工程下提供cookie的前后端操作库(`src/utils/cookies.js`)，接管cookie操作。 前端使用此库读写cookie，实际上是读写localStorage中的数据，防止cookie中数据溢出。 各子应用的读写是隔离的，不会互相覆盖。 前端js会在合适的时机同步localStorage中的cookie数据到服务器端，让服务器端的cookie数据和前端同步。
+
+```js
+import { SERVICEID } from './config.js'
+import Cookies from './utils/cookies.js'
+
+Cookies.setServiceId(SERVICEID)
+Cookies.set('name', 'value'); // 永不过期
+Cookies.set('name', 'value', { expires: 7 }); // 过期时间7天
+Cookies.get('name'); // => 'value'
+Cookies.remove('name');
+Cookies.get('name'); // => undefined
+```
 
 ##### 防本地存储冲突规范
-1. 为了防止子应用冲突，所有子应用向`localStorage`里读写数据时，必须带上子应用ID为前缀例如
+
+1. Chrome下`sessionStorage` `localStorage`的容量为5M。超过5M后将无法写入。
+2. 各子应用尽量用`sessionStorage`代替`localStorage`，防止`localStorage`膨胀
+3. 各子应用不要向`localStorage`存储大量数据（超过100K）
+4. 为了防止子应用冲突，所有子应用向`localStorage`里读写数据时，必须带上子应用ID为前缀例如
+
 ```js
 import {SERVICEID} from './config.js'
 localStorage.setItem(`${SERVICEID}.foo`, 'value')
@@ -58,6 +74,7 @@ localStorage.setItem(`${SERVICEID}.foo.bar`, 'value')
 ```
 
 ##### 跨子应用数据交互规范
+
 1. 在`index.js`里我们定义了`portal.global`为一个`Observable`实例，`Observable`是`订阅/发布模式`的实现，所以`portal.global`支持
 `get`
 `set`
