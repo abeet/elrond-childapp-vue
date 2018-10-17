@@ -6,8 +6,8 @@
   "license": "ISC",
   "scripts": {
     "start": "node ./server.js",
-    "dev": "webpack --config build/webpack.dev.conf.js --progress --watch",
-    "dev:ie": "IE=9 webpack --config build/webpack.dev.conf.js --progress --watch",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev:ie": "cross-env IE=9 webpack --config build/webpack.dev.conf.js --progress --watch",
     "build": "webpack --config build/webpack.prod.conf.js --progress --hide-modules"
   },
   "dependencies": {

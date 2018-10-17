@@ -15,7 +15,7 @@ const packageConfig = require('../package.json')
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
-const env = require('../config/prod.env')
+const env = require('../config/dev.env')
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
@@ -29,13 +29,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     compress: true,
     host: HOST || 'localhost',
     port: PORT || '3000',
-    open: false,
+    open: true,
     overlay: { warnings: false, errors: true },
-    publicPath: `/${SERVICEID}/`,
+    // publicPath: `/${SERVICEID}/`,
     proxy: {},
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
-      poll: false,
+      poll: false
     }
   },
   plugins: [
