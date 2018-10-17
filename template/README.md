@@ -63,14 +63,20 @@ Cookies.get('name'); // => undefined
 ##### 防本地存储冲突规范
 
 1. Chrome下`sessionStorage` `localStorage`的容量为5M。超过5M后将无法写入。
-2. 各子应用尽量用`sessionStorage`代替`localStorage`，防止`localStorage`膨胀
-3. 各子应用不要向`localStorage`存储大量数据（超过100K）
-4. 为了防止子应用冲突，所有子应用向`localStorage`里读写数据时，必须带上子应用ID为前缀例如
+2. 在脚手架工程下提供localStorage的前后端操作库(`src/utils/storage.js`)，接管localStorage操作。 前端使用此库读写localStorage，
+3. 为了防止子应用冲突，所有子应用向`localStorage`里读写数据时，使用框架封装的`LocalStorage`对象例如
 
 ```js
 import {SERVICEID} from './config.js'
-localStorage.setItem(`${SERVICEID}.foo`, 'value')
-localStorage.setItem(`${SERVICEID}.foo.bar`, 'value')
+import LocalStorage from './utils/storage.js'
+
+LocalStorage.setServiceId(SERVICEID)
+LocalStorage.setItem('foo', 'value')
+LocalStorage.setItem('foo.bar', 'value')
+LocalStorage.removeItem('foo.bar')
+LocalStorage.getItem('foo')
+
+
 ```
 
 ##### 跨子应用数据交互规范

@@ -1,5 +1,6 @@
 import {SERVICEID} from './config.js'
 import Cookies from './utils/cookies.js'
+import LocalStorage from './utils/storage.js'
 import Vue from 'vue/dist/vue.min.js'
 import VueRouter from 'vue-router'
 import elrondSpaVue from './elrond-spa-vue'
@@ -11,6 +12,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import Main from './views/main.vue'
 
 Cookies.setServiceId(SERVICEID)
+LocalStorage.setServiceId(SERVICEID)
 
 Vue.use(VueRouter)
 Vue.use(ELEMENT)

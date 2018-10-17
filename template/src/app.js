@@ -1,5 +1,6 @@
 import { SERVICEID } from './config.js'
 import Cookies from './utils/cookies.js'
+import LocalStorage from './utils/storage.js'
 import axiosMock from './axiosMock.js'
 import Vue from 'vue/dist/vue.min.js'
 import VueRouter from 'vue-router'
@@ -11,6 +12,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import App from './views/app.vue'
 
 Cookies.setServiceId(SERVICEID)
+LocalStorage.setServiceId(SERVICEID)
 
 // 以下向window添加全局变量，如果有正确配置ESLint，应该会显示ESLint警告
 // window.asdf = 123
