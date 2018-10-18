@@ -18,11 +18,25 @@ const webpackConfig = merge(baseWebpackConfig, {
   devtool: false,
   output: {
     filename: '[name].[chunkhash:8].js',
-    chunkFilename: '[name].[chunkhash:8].js'
+    chunkFilename: '[name].[chunkhash:8].js',
+    publicPath: `/${SERVICEID}/`
   },
+  // optimization: {
+  //   splitChunks: {
+  //     cacheGroups: {
+  //       vendors: {
+  //         name: `vendors`,
+  //         test: /[\\/]node_modules[\\/]/,
+  //         chunks: 'all'
+  //       }
+  //     }
+  //   }
+  // },
   plugins: [
     new VueLoaderPlugin(),
-    new CleanWebpackPlugin(['dist/*.js', 'dist/*.map']),
+    new CleanWebpackPlugin(['../dist/*.js', '../dist/*.map'], {
+      allowExternal: true
+    }),
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env
@@ -38,10 +52,10 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     // extract css into its own file
     new ExtractTextPlugin({
-      filename: 'assets/css/[name].[contenthash].css',
+      filename: 'assets/css/[name].[chunkhash:8].css',
       // Setting the following option to `false` will not extract CSS from codesplit chunks.
       // Their CSS will instead be inserted dynamically with style-loader when the codesplit chunk has been loaded by webpack.
-      // It's currently set to `true` because we are seeing that sourcemaps are included in the codesplit bundle as well when it's `false`, 
+      // It's currently set to `true` because we are seeing that sourcemaps are included in the codesplit bundle as well when it's `false`,
       // increasing file size: https://github.com/vuejs-templates/webpack/issues/1110
       allChunks: true,
     }),

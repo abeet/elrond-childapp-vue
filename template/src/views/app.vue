@@ -28,7 +28,7 @@
     <div id='services-container' class='services-container'>
 
       <div :id="SERVICEID" :class="SERVICEID">
-        <h4>这儿是一个子应用，使用Vue编写。</h4>
+        <!-- <h4>这儿是一个子应用，使用Vue编写。</h4> -->
         <router-view :key="$route.fullPath"></router-view>
       </div>
 

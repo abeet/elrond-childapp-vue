@@ -1,4 +1,5 @@
 import request from '../utils/request'
+// 根据业务模块命名，和 /views/* 一一对应
 
 export function loginByUsername (username, password) {
   const data = {

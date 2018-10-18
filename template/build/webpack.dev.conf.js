@@ -3,6 +3,7 @@ const SERVICEID = require('../src/config.js').SERVICEID
 const baseWebpackConfig = require('./webpack.base.conf')
 const path = require('path')
 const webpack = require('webpack')
+const config = require('../config')
 const merge = require('webpack-merge')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
@@ -29,10 +30,10 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     compress: true,
     host: HOST || 'localhost',
     port: PORT || '3000',
-    open: true,
+    open: false,
     overlay: { warnings: false, errors: true },
     // publicPath: `/${SERVICEID}/`,
-    proxy: {},
+    proxy: config.dev.proxyTable,
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: false
@@ -40,7 +41,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new CleanWebpackPlugin(['dist/*.js', 'dist/*.map']),
+    new CleanWebpackPlugin(['../dist/*.js', '../dist/*.map'], {
+      allowExternal: true
+    }),
     new webpack.DefinePlugin({
       'process.env': env
     }),

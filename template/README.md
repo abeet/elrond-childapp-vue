@@ -13,12 +13,15 @@
 - [Webpack](https://github.com/webpack/webpack)
 
 ## 开发流程：
-1. 克隆本脚手架前端工程，确认`src/config.js`里的SERVICEID配置是否正确，确认`server.js`里要发送给注册中心的菜单配置是否正确。
-1. 根据项目实际需求，配置路由和菜单，准备各路由所对应的vue文件，vue文件内容为空白，待分配给项目成员实现。
-1. 在mock目录下准备mock数据，设计好数据结构（控件需要的数据结构）和字段名（最好同数据库中表结构字段名，并使用驼峰式命名）
-1. 实现vue文件的界面部分，使用axios-mock-adapter来拦截ajax请求，返回mock数据。
-1. 后端实现RESTful接口，并维护接口文档（在doc目录下维护raml格式接口文档或使用 http://apizza.cc 在线文档服务）
-1. 前端取消axios-mock-adapter拦截，调试后端接口。
+1. 克隆本脚手架前端工程，
+  - 确认`src/config.js`里的SERVICEID配置是否正确
+  - 确认`server.js`里要发送给注册中心的菜单配置是否正确
+  - 如需代理后端接口，请在`config/index.js`里配置后端接口代理地址
+1. 根据项目实际需求，配置路由和菜单(`src/router/routes.js`)，准备各路由所对应的vue文件，vue文件内容为空白，待分配给项目成员实现。
+1. 在各模块的mock目录下准备mock数据，设计好数据结构（控件需要的数据结构）和字段名（最好同数据库中表结构字段名，并使用驼峰式命名）
+1. 实现vue文件的界面部分，使用`axios-mock-adapter`来拦截ajax请求，返回mock数据。
+1. 后端实现RESTful接口，并维护接口文档（在doc目录下维护Swagger格式接口文档或使用 http://apizza.cc 在线文档服务）
+1. 前端取消`axios-mock-adapter`拦截，调试后端接口。
 
 ## 注意事项
 1. JS风格使用`JavaScript Standard Style`，建议使用VSCode作为js/vue的编辑器，并安装以下插件`EditorConfig for VSCode` , `Prettier-Standard - JavaScript formatter` , `JavaScript Standard Style` , `stylefmt` , `Vetur`。

@@ -5,9 +5,10 @@ import getters from './getters'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   modules: {
-    user
+    user // 组装 user 并导出
   },
   getters
 })
+export default store

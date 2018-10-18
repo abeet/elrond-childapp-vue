@@ -10,6 +10,7 @@ import store from './store/index.js'
 import ELEMENT from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './views/app.vue'
+import Vuex from 'vuex'
 
 Cookies.setServiceId(SERVICEID)
 LocalStorage.setServiceId(SERVICEID)
@@ -22,6 +23,7 @@ LocalStorage.setServiceId(SERVICEID)
 
 Vue.use(VueRouter)
 Vue.use(ELEMENT)
+Vue.use(Vuex)
 
 const router = new VueRouter({
   mode: 'hash',
@@ -34,4 +36,4 @@ new Vue({
   el: `#root`,
   render: h => h(App)
 })
-axiosMock.onAny().passThrough()
+// axiosMock.onAny().passThrough()

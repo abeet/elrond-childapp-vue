@@ -1,10 +1,6 @@
 'use strict'
 const SERVICEID = require('../src/config.js').SERVICEID
 const path = require('path')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -18,28 +14,28 @@ const createLintingRule = () => ({
   loader: 'eslint-loader',
   options: {
     formatter: require('eslint-friendly-formatter'),
-    "parserOptions": {
-      "parser": "babel-eslint"
+    'parserOptions': {
+      'parser': 'babel-eslint'
     },
-    "env": {
-      "browser": true
+    'env': {
+      'browser': true
     },
-    "plugins": [
-      "elrond-childapp-bound"
+    'plugins': [
+      'elrond-childapp-bound'
     ],
-    "rules": {
-      "comma-dangle": 0,
-      "generator-star-spacing": 0,
-      "indent": 0,
-      "semi": 0,
-      "no-multiple-empty-lines": 0,
-      "no-unused-vars": 0,
-      "no-tabs": 0,
-      "space-before-blocks": 0,
-      "space-before-function-paren": 0,
-      "vue/no-unused-vars": 0,
-      "elrond-childapp-bound/no-global-declaration": 2,
-      "elrond-childapp-bound/no-write-cookie": 2
+    'rules': {
+      'comma-dangle': 0,
+      'generator-star-spacing': 0,
+      'indent': 0,
+      'semi': 0,
+      'no-multiple-empty-lines': 0,
+      'no-unused-vars': 0,
+      'no-tabs': 0,
+      'space-before-blocks': 0,
+      'space-before-function-paren': 0,
+      'vue/no-unused-vars': 0,
+      'elrond-childapp-bound/no-global-declaration': 2,
+      'elrond-childapp-bound/no-write-cookie': 2
     }
   }
 })
@@ -58,11 +54,12 @@ const createBabelOptions = () => {
       ]
     ],
     'plugins': [
+      'syntax-dynamic-import',
       'transform-object-rest-spread'
     ]
   }
   if (process.env.IE) {
-    babelrc.presets[0][1].targets.browsers = ['ie >= '+process.env.IE]
+    babelrc.presets[0][1].targets.browsers = ['ie >= ' + process.env.IE]
     babelrc.plugins = [
       'transform-class-properties',
       'transform-object-rest-spread',
@@ -82,14 +79,13 @@ module.exports = {
   output: {
     path: resolve('dist'),
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? `/${SERVICEID}/` : ''
+    chunkFilename: '[name].js'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
+      '@': resolve('src')
     }
   },
   module: {
@@ -123,7 +119,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 4096, // 4K左右
-          name: 'assets/media/[name].[hash:7].[ext]'
+          name: 'assets/media/[name].[ext]'
         }
       },
       {

@@ -1,4 +1,4 @@
-const {SERVICEID,SERVICENAME} = require('./src/config.js')
+const { SERVICEID, SERVICENAME } = require('./src/config.js')
 const routes = require('./src/router/routes.js')
 const express = require('express')
 const request = require('request-promise')
@@ -17,8 +17,7 @@ app.get('/healthCheck', (req, res) => {
     message: 'service is living'
   })
 })
-
-!(async function (params) {
+;(async function (params) {
   const files = fs.readdirSync(path.join(__dirname, 'dist'))
   let serviceJS
   let widgetJS
@@ -33,20 +32,22 @@ app.get('/healthCheck', (req, res) => {
     }
   })
 
-  const port = await getPort({port: 3000})
+  const port = await getPort({ port: 3000 })
   const ip = address()
   const serviceRegistryUrl = process.env.REGISTRY || 'http://localhost:8000'
   const url = `http://${ip}:${port}`
 
-  const menus = [{
-    id: SERVICEID,
-    name: SERVICENAME,
-    children: []
-  }]
-  for(route of routes){
-    if(route.path && route.meta && route.meta.title){
+  const menus = [
+    {
+      id: SERVICEID,
+      name: SERVICENAME,
+      children: []
+    }
+  ]
+  for (let route of routes) {
+    if (route.path && route.meta && route.meta.title) {
       menus[0].children.push({
-        id: route.path.replace(/\//g,'-').replace(/^-/,''),
+        id: route.path.replace(/\//g, '-').replace(/^-/, ''),
         name: route.meta.title,
         link: route.path
       })
@@ -64,7 +65,8 @@ app.get('/healthCheck', (req, res) => {
         url: url,
         serviceJS: serviceJS ? `${url}/${serviceJS}` : '',
         menus: menus,
-        widgets: [// 由于Portal界面的位置有限，每个子应用暂时只允许向Portal界面添加一个widget
+        widgets: [
+          // 由于Portal界面的位置有限，每个子应用暂时只允许向Portal界面添加一个widget
           {
             id: `widget-${SERVICEID}-todos`,
             name: '待处理报关单',
@@ -79,11 +81,13 @@ app.get('/healthCheck', (req, res) => {
       }
     },
     json: true
-  }).then(res=>{
-    console.log(res.message)
-  }).catch(e=>{
-    console.error(e.message)
   })
+    .then(res => {
+      console.log(res.message)
+    })
+    .catch(e => {
+      console.error(e.message)
+    })
   const server = app.listen(port, _ => {
     console.log('server has started', server.address())
   })

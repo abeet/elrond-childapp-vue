@@ -12,7 +12,7 @@ const routers = JSON.parse(JSON.stringify(routes))
 const attachComp = arr => {
   arr.forEach(item => {
     if (typeof item.component === 'string' && components[item.component]) {
-      item.component = components[item.component]
+      item.component = components[item.component].default || components[item.component]
     }
     if (item.children && item.children.length) {
       attachComp(item.children)
