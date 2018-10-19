@@ -7,7 +7,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   modules: {
-    user // 组装 user 并导出
+    user // 对应上面 import 的 user，以逗号分割增加
   },
   getters
 })

@@ -70,11 +70,16 @@ const user = {
               // 由于mockjs 不支持自定义状态码只能这样hack
               reject(new Error())
             }
-            const data = response.data
-            commit('SET_ROLES', data.role)
-            commit('SET_NAME', data.name)
-            commit('SET_AVATAR', data.avatar)
-            commit('SET_INTRODUCTION', data.introduction)
+            const { roles, name, avatar, introduction } = response.data
+            if (roles && roles.length > 0) {
+              // 验证返回的roles是否是一个非空数组
+              commit('SET_ROLES', roles)
+            } else {
+              reject(new Error('getInfo: roles must be a non-null array !'))
+            }
+            commit('SET_NAME', name)
+            commit('SET_AVATAR', avatar)
+            commit('SET_INTRODUCTION', introduction)
             resolve(response)
           })
           .catch(error => {

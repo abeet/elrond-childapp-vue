@@ -1,9 +1,10 @@
 <template>
    <div class="hello">
-    <h1>\{{ msg }}权限:\{{role}}</h1>
+    <h3>\{{ msg }}：</h3>
+    <p>用户名：\{{ name }} 权限：\{{roles}}</p>
     <ul>
       <li>
-        <el-button type="primary" v-on:click="changeRole">动态修改权限</el-button>
+        <el-button type="primary" size="medium" v-on:click="getUserInfo">获取用户信息</el-button>
       </li>
     </ul>
   </div>
@@ -19,20 +20,19 @@ export default {
   components: {},
   data() {
     return {
-      msg: '您当前的',
-      role: 'user'
+      msg: '用户信息',
+      token: 'ss'
     }
   },
   methods: {
-    changeRole() {
-      this.$store.dispatch('ChangeRole', this.role).then(response => {
+    getUserInfo() {
+      this.$store.dispatch('GetUserInfo', this.token).then(response => {
         // const { status, statusText, headers, data } = response
       })
     }
   },
-  created: function() {},
   computed: {
-    ...mapGetters(['role'])
+    ...mapGetters(['name', 'roles'])
   }
 }
 </script>

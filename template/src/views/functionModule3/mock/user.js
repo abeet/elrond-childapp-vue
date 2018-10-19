@@ -67,3 +67,7 @@ axiosMock.onPost('/api/users').reply(200, {
   status: 1,
   message: '添加成功'
 })
+
+// 注意，如果还有其他axiosMock拦截配置，请确保所有axiosMock拦截配置执行完之后再执行 axiosMock.onAny().passThrough()
+axiosMock.onAny().passThrough()
+// 注意，如果还有其他axiosMock拦截配置，请确保所有axiosMock拦截配置执行完之后再执行 axiosMock.onAny().passThrough()

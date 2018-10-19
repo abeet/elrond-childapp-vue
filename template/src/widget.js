@@ -1,5 +1,5 @@
 import {SERVICEID} from './config.js'
-import Vue from 'vue/dist/vue.min.js'
+import Vue from 'vue'
 import VueRouter from 'vue-router'
 import elrondSpaVue from './elrond-spa-vue.js'
 import Widget from './views/widget.component.vue'

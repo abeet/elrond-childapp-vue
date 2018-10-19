@@ -3,9 +3,9 @@ const { SERVICEID } = require('../config.js')
 // 设置所有路由对应组件别名
 const routes = [
   {
-    path: `/${SERVICEID}/login`,
+    path: `/${SERVICEID}/home`,
     meta: { title: '首页', icon: 'fa fa-user-circle-o' },
-    component: '/login/index'
+    component: '/home/index'
   },
   {
     path: `/${SERVICEID}/subroute1`,

@@ -1,5 +1,6 @@
 // 异步载入的组件
 const components = {
+  // 可视情况将部分组件在 components.js 用require同步导入
   '/subroute1/index': () => import(/* webpackChunkName: "subroute1$index" */ '../views/functionModule1/index.vue'),
   '/subroute1/detail': () => import(/* webpackChunkName: "subroute1$detail" */ '../views/functionModule1/detail.vue'),
   '/subroute2/index': () => import(/* webpackChunkName: "subroute2$index" */ '../views/functionModule2/index.vue'),

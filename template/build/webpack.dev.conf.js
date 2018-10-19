@@ -29,7 +29,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     contentBase: false, // since we use CopyWebpackPlugin.
     compress: true,
     host: HOST || 'localhost',
-    port: PORT || '3000',
+    port: PORT || config.dev.port,
     open: false,
     overlay: { warnings: false, errors: true },
     // publicPath: `/${SERVICEID}/`,
@@ -93,7 +93,7 @@ const createNotifierCallback = () => {
 }
 
 module.exports = new Promise((resolve, reject) => {
-  portfinder.basePort = process.env.PORT || '3000'
+  portfinder.basePort = process.env.PORT || config.dev.port
   portfinder.getPort((err, port) => {
     if (err) {
       reject(err)
