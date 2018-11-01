@@ -23,10 +23,10 @@ app.get('/healthCheck', (req, res) => {
   let widgetJS
   files.forEach(fileName => {
     if (path.extname(fileName) === '.js') {
-      if (fileName.match(/service\.\w{8}\.js/)) {
+      if (fileName.match(/service(\.\w{4,})?\.js/)) {
         serviceJS = fileName
       }
-      if (fileName.match(/widget[\w]*\.\w{8}\.js/)) {
+      if (fileName.match(/widget[\w]*(\.\w{4,})?\.js/)) {
         widgetJS = fileName
       }
     }

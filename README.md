@@ -11,10 +11,9 @@ yarn add zcf-cli -g
 zcf init elrond-childapp-vue my-project
 cd my-project
 yarn run dev
-yarn run start
 ```
 
 ### 运行
 
-- 目录下是一个vue工程，执行 `yarn run dev`  `yarn run start` 来启动前台
+- 目录下是一个vue工程，执行 `yarn run dev` 来进入开发模式
 

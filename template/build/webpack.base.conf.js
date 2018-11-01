@@ -111,7 +111,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 4096, // 4K左右
-          name: 'assets/images/[name].[hash:7].[ext]'
+          name: 'assets/images/[name].[hash:6].[ext]'
         }
       },
       {
@@ -127,7 +127,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 4096, // 4K左右
-          name: 'assets/fonts/[name].[hash:7].[ext]'
+          name: 'assets/fonts/[name].[hash:6].[ext]'
         }
       }
     ]

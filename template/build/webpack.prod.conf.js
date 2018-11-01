@@ -10,6 +10,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const HashedChunkidsPlugin = require('./hashed-chunkids-webpack-plugin.js')
+
+const faster = process.env.MODE == 'faster'
 
 const env = require('../config/prod.env')
 
@@ -17,11 +20,20 @@ const webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
   devtool: false,
   output: {
-    filename: '[name].[chunkhash:8].js',
-    chunkFilename: '[name].[chunkhash:8].js',
+    filename: SERVICEID + '-[name].[chunkhash:6].js',
+    chunkFilename: SERVICEID + '-[name].[chunkhash:6].js',
     publicPath: `/${SERVICEID}/`
   },
-  // optimization: {
+  optimization: {
+    minimizer: faster ? []: [new UglifyJsPlugin({
+      uglifyOptions: {
+        compress: {
+          warnings: false
+        }
+      },
+      sourceMap: true,
+      parallel: true
+    })]
   //   splitChunks: {
   //     cacheGroups: {
   //       vendors: {
@@ -31,7 +43,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   //       }
   //     }
   //   }
-  // },
+  },
   plugins: [
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(['../dist/*.js', '../dist/*.map'], {
@@ -41,23 +53,14 @@ const webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        compress: {
-          warnings: false
-        }
-      },
-      sourceMap: true,
-      parallel: true
-    }),
     // extract css into its own file
     new ExtractTextPlugin({
-      filename: 'assets/css/[name].[chunkhash:8].css',
+      filename: 'assets/css/[name].[chunkhash:6].css',
       // Setting the following option to `false` will not extract CSS from codesplit chunks.
       // Their CSS will instead be inserted dynamically with style-loader when the codesplit chunk has been loaded by webpack.
       // It's currently set to `true` because we are seeing that sourcemaps are included in the codesplit bundle as well when it's `false`,
       // increasing file size: https://github.com/vuejs-templates/webpack/issues/1110
-      allChunks: true,
+      allChunks: true
     }),
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html
@@ -71,6 +74,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     // keep module.id stable when vendor modules does not change
     new webpack.HashedModuleIdsPlugin(),
+    new HashedChunkidsPlugin(),
     // enable scope hoisting
     new webpack.optimize.ModuleConcatenationPlugin(),
     // copy custom static assets

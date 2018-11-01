@@ -30,7 +30,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     compress: true,
     host: HOST || 'localhost',
     port: PORT || config.dev.port,
-    open: false,
+    open: config.dev.autoOpenBrowser,
     overlay: { warnings: false, errors: true },
     // publicPath: `/${SERVICEID}/`,
     proxy: config.dev.proxyTable,

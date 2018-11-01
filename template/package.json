@@ -8,18 +8,20 @@
     "server": "node ./server.js",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "dev:ie": "cross-env IE=9 webpack --config build/webpack.dev.conf.js --progress --watch",
-    "build": "webpack --config build/webpack.prod.conf.js --progress --hide-modules"
+    "build": "webpack --config build/webpack.prod.conf.js --progress --hide-modules",
+    "build:faster": "cross-env MODE=faster webpack --config build/webpack.prod.conf.js --progress --hide-modules",
+    "lint": "./node_modules/.bin/eslint --fix --ext .js,.vue ./src/views ./src/components"
   },
   "dependencies": {
     "axios": "0.x",
     "axios-mock-adapter": "1.x",
-    "element-ui": "^2.4.5",
+    "element-ui": "^2.3.3",
     "lodash": "4.x",
-    "mockjs": "^1.0.1-beta3",
-    "v-hotkey": "^0.2.3",
+    "mockjs": "1.x",
+    "v-hotkey": "0.x",
     "vue": "2.5.x",
     "vue-router": "2.x",
-    "vuex": "^3.0.1"
+    "vuex": "3.x"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

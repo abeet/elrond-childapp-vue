@@ -200,7 +200,6 @@ yarn install
 
 # 进入开发模式，启动前台应用，localhost:3000 。监听vue文件改动自动刷新浏览器  
 yarn run dev
-yarn run start
 
 # 构建文件到dist目录供发布  
 yarn run build
