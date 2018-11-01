@@ -10,6 +10,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const HashedChunkidsPlugin = require('./hashed-chunkids-webpack-plugin.js')
 
 const faster = process.env.MODE == 'faster'
@@ -45,6 +46,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   //   }
   },
   plugins: [
+    new CaseSensitivePathsPlugin(),
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(['../dist/*.js', '../dist/*.map'], {
       allowExternal: true

@@ -10,12 +10,13 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const portfinder = require('portfinder')
-const packageConfig = require('../package.json')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
+const packageConfig = require('../package.json')
 const env = require('../config/dev.env')
 
 const devWebpackConfig = merge(baseWebpackConfig, {
@@ -40,6 +41,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     }
   },
   plugins: [
+    new CaseSensitivePathsPlugin(),
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(['../dist/*.js', '../dist/*.map'], {
       allowExternal: true
