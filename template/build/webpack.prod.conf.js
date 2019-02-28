@@ -13,7 +13,11 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const HashedChunkidsPlugin = require('./hashed-chunkids-webpack-plugin.js')
 
-const faster = process.env.MODE == 'faster'
+if (!/^\w[-\w]+$/.test(SERVICEID)) {
+  throw new Error('SERVICEID只能由字母和数字组成，不能使用特殊符号')
+}
+
+const faster = process.env.MODE === 'faster'
 
 const env = require('../config/prod.env')
 
@@ -23,12 +27,16 @@ const webpackConfig = merge(baseWebpackConfig, {
   output: {
     filename: SERVICEID + '-[name].[chunkhash:6].js',
     chunkFilename: SERVICEID + '-[name].[chunkhash:6].js',
-    publicPath: `/${SERVICEID}/`
+    publicPath: `/${SERVICEID}/`,
+    library: SERVICEID + '_[name]',
+    libraryTarget: 'umd'
   },
   optimization: {
-    minimizer: faster ? []: [new UglifyJsPlugin({
+    minimizer: faster ? [] : [new UglifyJsPlugin({
       uglifyOptions: {
         compress: {
+          sequences: false,
+          conditionals: false,
           warnings: false
         }
       },

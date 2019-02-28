@@ -17,7 +17,7 @@ app.get('/healthCheck', (req, res) => {
     message: 'service is living'
   })
 })
-;(async function (params) {
+;(async function(params) {
   const files = fs.readdirSync(path.join(__dirname, 'dist'))
   let serviceJS
   let widgetJS
@@ -32,6 +32,7 @@ app.get('/healthCheck', (req, res) => {
     }
   })
 
+  console.log(SERVICEID,SERVICENAME,serviceJS)
   const port = await getPort({ port: 3000 })
   const ip = address()
   const serviceRegistryUrl = process.env.REGISTRY || 'http://localhost:8000'

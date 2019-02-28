@@ -61,8 +61,9 @@ const createBabelOptions = () => {
   if (process.env.IE) {
     babelrc.presets[0][1].targets.browsers = ['ie >= ' + process.env.IE]
     babelrc.plugins = [
-      'transform-class-properties',
+      'syntax-dynamic-import',
       'transform-object-rest-spread',
+      'transform-class-properties',
       'transform-runtime'
     ]
   }
@@ -73,8 +74,8 @@ module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
     app: './src/app.js',
-    service: './src/service.register.js',
-    widget: './src/widget.register.js'
+    service: './src/service.js',
+    widget: './src/widget.js'
   },
   output: {
     path: resolve('dist'),
