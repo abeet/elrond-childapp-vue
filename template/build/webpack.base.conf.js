@@ -89,6 +89,15 @@ module.exports = {
       '@': resolve('src')
     }
   },
+  externals: {
+    // 库已经在页面中引入，使用全局变量代替对库的引用，库内容不用再打包到app.js中
+    jquery: 'jQuery',
+    axios: 'axios',
+    vue: 'Vue',
+    vuex: 'Vuex',
+    'vue-router': 'VueRouter',
+    'element-ui': 'ELEMENT'
+  },
   module: {
     rules: [
       ...[createLintingRule()],
